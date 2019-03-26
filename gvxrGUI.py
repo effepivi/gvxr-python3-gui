@@ -6,10 +6,10 @@
 from random import SystemRandom
 import sys, argparse
 
-import numpy as np
-
 import gvxrPython3 as gvxr
+
 import App
+
 
 x_ray_image = 0;
 cryptogen = SystemRandom()
