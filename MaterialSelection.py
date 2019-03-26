@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 import gvxrPython3 as gvxr
 
 class MaterialSelection:

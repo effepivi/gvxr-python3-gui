@@ -17,9 +17,8 @@ from matplotlib.backend_bases import key_press_handler
 
 from matplotlib.figure import Figure
 
-from numpy import arange, sin, pi
+from numpy import arange, sin
 
-from gvxrGUI import x_ray_image
 
 
 class DisplayXRay:
@@ -45,7 +44,6 @@ class DisplayXRay:
             self.fig.clear();
 
         norm = colors.Normalize(vmin=self.x_ray_image.min(),vmax=self.x_ray_image.max())
-        log_norm = colors.LogNorm(vmin=self.x_ray_image.min(),vmax=self.x_ray_image.max())
 
         ax = self.fig.add_subplot(211)
         self.im_plot1 = ax.imshow(self.x_ray_image, norm=norm, cmap="PuBu_r");

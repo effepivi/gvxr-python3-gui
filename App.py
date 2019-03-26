@@ -250,13 +250,4 @@ class App:
 
     def idle(self):
         gvxr.displayScene()
-        '''w=random.randint(1,100)
-        h=random.randint(1,100)
-        canvas.create_rectangle(w,h,w+150,h+150)
-        def callback(event):
-            if True:
-                print("clicked2")
-                tk.after_cancel(task)
-        canvas.bind("<Button-1>",callback)
-        tk.after(1000,task) '''
         self.root.after(10, self.idle)
