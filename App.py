@@ -11,6 +11,10 @@ import DisplayXRay
 def toHex(aColour):
     return ''.join(["%02x" % e for e in aColour])
 
+def saveImage():
+    gvxr.saveLastLBuffer();
+    gvxr.saveLastXRayImage();
+
 class App:
     def __init__(self, anEnergy):
         self.root = tk.Tk()
@@ -27,6 +31,7 @@ class App:
         self.source_shape = tk.IntVar()
         self.energy_var.set(0);
         self.selected_item = 0;
+        self.last_xray_image = None;
 
         MODES = [
                 ("None", 0),
@@ -72,7 +77,7 @@ class App:
         print ("Set the source shape");
         self.setSourceShape();
 
-        self.button = tk.Button(self.canvas, text="Save images", command=self.saveImage)
+        self.button = tk.Button(self.canvas, text="Save images", command=saveImage)
         self.button.pack(anchor=tk.CENTER)
 
 
@@ -149,16 +154,15 @@ class App:
             print ("Use parallel beam");
             gvxr.useParallelBeam();
 
-        x_ray_image = gvxr.computeXRayImage();
+        self.last_xray_image = gvxr.computeXRayImage();
         gvxr.displayScene()
-        self.xray_vis.draw(x_ray_image);
+        self.xray_vis.draw(self.last_xray_image);
 
     def setEnergy(self, event):
-        global x_ray_image
         gvxr.setMonoChromatic(self.energy_var.get(), "MeV", 1);
-        x_ray_image = gvxr.computeXRayImage();
+        self.last_xray_image = gvxr.computeXRayImage();
         gvxr.displayScene()
-        self.xray_vis.draw(x_ray_image);
+        self.xray_vis.draw(self.last_xray_image);
 
         selection = "Energy = " + str((self.energy_var.get())) + ' MeV'
         self.energy_label.config(text = selection)
@@ -185,7 +189,6 @@ class App:
             child_children = gvxr.getNumberOfChildren(text);
 
             if material_selection.cancel == False:
-                global x_ray_image;
 
                 # Element
                 if material_selection.materialType.get() == 0:
@@ -213,16 +216,14 @@ class App:
 
                 self.tree.item(self.selected_item, values=(str(child_children), gvxr.getMaterialLabel(text), str(gvxr.getDensity(text))))
 
-                x_ray_image = gvxr.computeXRayImage();
+                self.last_xray_image = gvxr.computeXRayImage();
                 gvxr.displayScene()
-                self.xray_vis.draw(x_ray_image);
+                self.xray_vis.draw(self.last_xray_image);
 
                 #node_id = self.tree.insert(parent_id, 'end', text=child_label, values=(str(0), gvxr.getMaterialLabel(child_label)))
 
 
     def artefactFilteringSelection(self):
-        global x_ray_image;
-
         value = self.artefact_filtering_var.get();
         if value is 0:
             gvxr.disableArtefactFiltering();
@@ -231,27 +232,21 @@ class App:
         elif value is 2:
             gvxr.enableArtefactFilteringOnGPU();
 
-        x_ray_image = gvxr.computeXRayImage();
+        self.last_xray_image = gvxr.computeXRayImage();
         gvxr.displayScene()
-        self.xray_vis.draw(x_ray_image);
+        self.xray_vis.draw(self.last_xray_image);
 
 
     def rotationScene(self, widget):
-        global x_ray_image;
         selection = "Angle = " + str(int(self.rotation_var.get())) + ' deg'
         self.angle_label.config(text = selection)
 
         gvxr.rotateScene(self.rotation_var.get() - self.last_angle, 0, -1, 0);
         self.last_angle = self.rotation_var.get();
 
-        x_ray_image = gvxr.computeXRayImage();
+        self.last_xray_image = gvxr.computeXRayImage();
         gvxr.displayScene()
-        self.xray_vis.draw(x_ray_image);
-
-
-    def saveImage(self):
-        gvxr.saveLastLBuffer();
-        gvxr.saveLastXRayImage();
+        self.xray_vis.draw(self.last_xray_image);
 
     def idle(self):
         gvxr.displayScene()
