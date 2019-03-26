@@ -3,7 +3,8 @@
 
 #from PIL import Image
 
-import random
+from random import SystemRandom
+
 import matplotlib
 import sys, argparse
 
@@ -13,6 +14,7 @@ import gvxrPython3 as gvxr
 import App
 
 x_ray_image = 0;
+cryptogen = SystemRandom()
 
 def main(argv):
     global x_ray_image;
@@ -70,7 +72,7 @@ def main(argv):
             gvxr.setElement(last_node, gvxr.getElementName(Z));
 
             # Change the node colour to a random colour
-            gvxr.setColour(last_node, random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1), 1.0);
+            gvxr.setColour(last_node, cryptogen.random(), cryptogen.random(), cryptogen.random(), 1.0);
 
             # Remove it from the list
             node_label_set.pop();
