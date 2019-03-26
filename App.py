@@ -143,6 +143,7 @@ class App:
 
         self.geometrical_transformation = GeometricalTransformation.GeometricalTransformation(self.root, "root", self.xray_vis);
 
+    def mainLoop(self):
         self.root.mainloop()
 
     def setSourceShape(self):

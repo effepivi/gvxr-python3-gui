@@ -113,7 +113,7 @@ def main(argv):
         gvxr.displayScene()
 
         app = App.App(0.08);
-
+        app.mainLoop();
 
 if __name__ == "__main__":
    main(sys.argv[1:])
