@@ -27,46 +27,6 @@ class GeometricalTransformation:
 
     def createWindow(self):
         self.window = tk.Toplevel(self.root);
-        '''self.buttonOK     = tk.Button(self.window, text="OK", command=self.clicOK)
-        self.buttonCancel = tk.Button(self.window, text="Cancel", command=self.clicCancel)
-        #self.buttonOK.grid(row=0,column=0, sticky=tk.W)
-        #self.buttonCancel.grid(row=0,column=0, sticky=tk.W)
-        self.buttonOK.pack(anchor=tk.W)
-        self.buttonCancel.pack(anchor=tk.W)
-
-        MODES = [
-                ("Element",                        0),
-                ("Mixture",                        1),
-                ("Compound",                       2),
-                ("Hounsfield unit",                3),
-                #("Mass attenuation coefficient",   4),
-                #("Linear attenuation coefficient", 5),
-        ]
-
-        choices = [];
-        for i in range(1, 100):
-            choices.append(gvxr.getElementName(i));
-        self.element_name.set(self.selected_element) # set the default option
-
-        for text, mode in MODES:
-            self.b = tk.Radiobutton(self.window, text=text,
-                    variable=self.materialType, value=mode,  command=self.updateWidgetStatus)
-            self.b.pack(anchor=tk.W)
-
-            if text == "Element":
-                self.element_menu = tk.OptionMenu(self.window, self.element_name, *choices, command=self.updateElementDensity);
-                self.element_menu.pack(anchor=tk.W)
-            elif text == "Mixture":
-                self.mixture_text = tk.Entry(self.window, textvariable=self.mixture)
-                self.mixture_text.pack()
-            elif text == "Compound":
-                self.compound_text = tk.Entry(self.window, textvariable=self.compound)
-                self.compound_text.pack()
-            elif text == "Hounsfield unit":
-                self.hounsfield_slider = tk.Scale(self.window, from_=-1000, to=3000, orient=tk.HORIZONTAL, variable=self.hounsfield_value)
-                self.hounsfield_slider.pack()
-        '''
-        #self.density_text = tk.Entry(self.window, textvariable=self.density)
 
         self.x_rotation_slider = tk.Scale(self.window, from_=-180, to=180, orient=tk.HORIZONTAL, variable=self.x_rotation_value, command=self.setXRotation)
         self.x_rotation_label = tk.Label(self.window)

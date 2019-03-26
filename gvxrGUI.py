@@ -4,8 +4,6 @@
 #from PIL import Image
 
 from random import SystemRandom
-
-import matplotlib
 import sys, argparse
 
 import numpy as np
@@ -52,10 +50,6 @@ def main(argv):
 
         gvxr.disableArtefactFiltering();
 
-        #gvxr.loadMeshFile("chest", "./HVPTest/chest2.obj", "mm");
-        #gvxr.invertNormalVectors("armR");
-        #gvxr.invertNormalVectors("chest");
-
         node_label_set = [];
         node_label_set.append('root');
 
@@ -81,16 +75,6 @@ def main(argv):
             for i in range(gvxr.getNumberOfChildren(last_node)):
                 node_label_set.append(gvxr.getChildLabel(last_node, i));
 
-            '''
-        for label in gvxr.getMeshLabelSet():
-            print("Move ", label, " to the centre");
-            #gvxr.moveToCentre(label);
-
-            #print("Move the mesh to the center");
-            #gvxr.moveToCenter(label);
-
-            #gvxr.invertNormalVectors(label);
-        '''
         #gvxr.moveToCentre();
         gvxr.moveToCentre('root');
 
@@ -100,18 +84,7 @@ def main(argv):
         #gvxr.enableArtefactFilteringOnGPU();
         # Not working anymore gvxr.enableArtefactFilteringOnGPU();
         # Not working anymore gvxr.enableArtefactFilteringOnCPU();
-        x_ray_image = np.array(gvxr.computeXRayImage());
-        '''x_ray_image -= 0.0799;
-        x_ray_image /= 0.08 - 0.0799;
-        plt.ioff();
-        plt.imshow(x_ray_image, cmap="gray");
-        plt.show()
-        '''
-        #gvxr.setShiftFilter(-0.0786232874);
-        #gvxr.setScaleFilter(726.368958);
-
-
-
+        gvxr.computeXRayImage();
         gvxr.displayScene()
 
         app = App.App(0.08);

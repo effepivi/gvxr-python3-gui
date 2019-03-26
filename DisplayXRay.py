@@ -13,12 +13,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 
 # implement the default mpl key bindings
 from matplotlib.backend_bases import key_press_handler
-
-
 from matplotlib.figure import Figure
-
-from numpy import arange, sin
-
 
 
 class DisplayXRay:
