@@ -100,7 +100,7 @@ def main(argv):
 
         # Compute an X-ray image
         #print("Compute an X-ray image");
-        #gvxr.disableArtefactFiltering();
+        gvxr.disableArtefactFiltering();
         #gvxr.enableArtefactFilteringOnGPU();
         # Not working anymore gvxr.enableArtefactFilteringOnGPU();
         # Not working anymore gvxr.enableArtefactFilteringOnCPU();

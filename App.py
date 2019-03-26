@@ -34,7 +34,7 @@ class App:
                 ("GPU",  2),
         ]
 
-        self.artefact_filtering_var.set(2)
+        self.artefact_filtering_var.set(0)
         self.artefactFilteringSelection();
 
 
