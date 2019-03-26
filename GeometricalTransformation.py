@@ -9,7 +9,7 @@ class GeometricalTransformation:
         self.root = root;
 
         self.xray_vis = XRayVis;
-        
+
         self.selected_node = aText;
 
         self.rotation_dictionary = dict();
@@ -96,8 +96,6 @@ class GeometricalTransformation:
         #self.updateWidgetStatus();
 
     def setXRotation(self, event):
-        global x_ray_image;
-
         selection = "Rotation in X = " + str((self.x_rotation_value.get())) + ' degrees'
         self.x_rotation_label.config(text = selection)
         gvxr.rotateNode(self.selected_node, self.x_rotation_value.get() - self.rotation_dictionary[self.selected_node][0], 1, 0 ,0);
@@ -107,8 +105,6 @@ class GeometricalTransformation:
         self.xray_vis.draw(x_ray_image);
 
     def setYRotation(self, event):
-        global x_ray_image;
-
         selection = "Rotation in Y = " + str((self.y_rotation_value.get())) + ' degrees'
         self.y_rotation_label.config(text = selection)
         gvxr.rotateNode(self.selected_node, self.y_rotation_value.get() - self.rotation_dictionary[self.selected_node][1], 0, 1 ,0);
@@ -118,8 +114,6 @@ class GeometricalTransformation:
         self.xray_vis.draw(x_ray_image);
 
     def setZRotation(self, event):
-        global x_ray_image;
-
         selection = "Rotation in Z = " + str((self.z_rotation_value.get())) + ' degrees'
         self.z_rotation_label.config(text = selection)
         gvxr.rotateNode(self.selected_node, self.z_rotation_value.get() - self.rotation_dictionary[self.selected_node][2], 0, 0 ,1);
