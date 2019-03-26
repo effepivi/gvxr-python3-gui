@@ -6,11 +6,7 @@ else:
 
 import numpy as np
 
-import matplotlib
-matplotlib.use("TkAgg")
 
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import matplotlib.colors as colors
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
@@ -54,13 +50,7 @@ class DisplayXRay:
         ax = self.fig.add_subplot(211)
         self.im_plot1 = ax.imshow(self.x_ray_image, norm=norm, cmap="PuBu_r");
         self.fig.colorbar(self.im_plot1, ax=ax, extend='max');
-        ax.set_title("X-ray image");
-
-        '''ax = self.fig.add_subplot(311)
-        self.im_plot2 = ax.imshow(self.x_ray_image, cmap="PuBu_r", norm=log_norm);
-        self.fig.colorbar(self.im_plot2, ax=ax, extend='max');
-        ax.set_title("X-ray image (in log scale)");'''
-
+        ax.set_title('X-ray image');
 
         ax = self.fig.add_subplot(212)
         n, bins, patches =  ax.hist(self.x_ray_image.ravel(), bins=256, density=True, facecolor='g', alpha=0.75)

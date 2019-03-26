@@ -1,7 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
 import gvxrPython3 as gvxr
-import DisplayXRay
 
 class GeometricalTransformation:
     def __init__(self, root, aText, XRayVis):
