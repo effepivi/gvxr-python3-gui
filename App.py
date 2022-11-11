@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-import gvxrPython3 as gvxr
+from gvxrPython3 import gvxr
 
 import MaterialSelection
 import GeometricalTransformation
@@ -226,11 +226,11 @@ class App:
 
     def artefactFilteringSelection(self):
         value = self.artefact_filtering_var.get();
-        if value is 0:
+        if value == 0:
             gvxr.disableArtefactFiltering();
-        elif value is 1:
+        elif value == 1:
             gvxr.enableArtefactFilteringOnCPU();
-        elif value is 2:
+        elif value == 2:
             gvxr.enableArtefactFilteringOnGPU();
 
         self.last_xray_image = gvxr.computeXRayImage();

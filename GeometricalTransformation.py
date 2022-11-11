@@ -1,5 +1,5 @@
 import tkinter as tk
-import gvxrPython3 as gvxr
+from gvxrPython3 import gvxr
 
 class GeometricalTransformation:
     def __init__(self, root, aText, XRayVis):
@@ -114,7 +114,7 @@ class GeometricalTransformation:
         if self.selected_node not in self.transformation_dictionary:
             print (self.selected_node, " is not in the dictionary");
             # Add the node to the dictionary
-            self.transformation_dictionary[self.selected_node] = gvxr.getNodeTransformationMatrix(self.selected_node);
+            self.transformation_dictionary[self.selected_node] = gvxr.getNodeLocalTransformationMatrix(self.selected_node);
 
         self.x_rotation_value.set(self.rotation_dictionary[self.selected_node][0]);
         self.y_rotation_value.set(self.rotation_dictionary[self.selected_node][1]);

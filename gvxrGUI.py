@@ -6,7 +6,7 @@
 from random import SystemRandom
 import sys, argparse
 
-import gvxrPython3 as gvxr
+from gvxrPython3 import gvxr
 
 import App
 
@@ -25,7 +25,7 @@ def main(argv):
     if args.input and args.unit:
         # Create an OpenGL context
         print("Create an OpenGL context")
-        gvxr.createWindow();
+        gvxr.createWindow(-1, 1);
         gvxr.setWindowSize(512, 512);
 
 

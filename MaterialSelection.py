@@ -1,5 +1,5 @@
 import tkinter as tk
-import gvxrPython3 as gvxr
+from gvxrPython3 import gvxr
 
 class MaterialSelection:
     def __init__(self, root, aText, aMaterialLabel, aDensity):
